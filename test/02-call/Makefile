@@ -1,5 +1,7 @@
-NAME= hello
+NAME= call
 TEST_ARGS=
+
+ASM_FILES= call
 
 COMP= nasm
 COMP_FLAG= -f elf64
@@ -15,9 +17,8 @@ SRC_EXT= .s
 
 OBJS_FILES= $(addprefix $(OBJS_FOLDER)/, $(addsuffix $(OBJ_EXT),$(ASM_FILES)))
 
-ASM_FILES= hello
-
 $(OBJS_FOLDER)/%$(OBJ_EXT): $(SRCS_FOLDER)/%$(SRC_EXT)
+	@clear
 	@mkdir -p $(OBJS_FOLDER)
 	@$(COMP) $(COMP_FLAG) $< -o $@
 	@echo "$@ : [OK]"

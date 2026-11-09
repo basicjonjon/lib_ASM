@@ -8,9 +8,9 @@ section .data
 
 ; il existe un section BSS qui permettra d'allouer de la memoir furture
 
-; text est l'endroit ou on met notre code
+; text est l'endroit ou on rend certaine partie du code accessible a l'exterieur du fichier 
 section .text
-	; global est utiliser quand on veut que l'editeur de lien connaisse l'adresse de l'etiquette
+	;ici global est utiliser pour que le linker connaisse l'adresse de start
 	global _start
 
 ; RAX contient l'id du syscall
