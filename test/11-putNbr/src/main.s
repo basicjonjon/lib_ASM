@@ -20,10 +20,11 @@ _putNbr:
 _putNbrLoop:
 	cmp rax, 10
 	div 10
-	push rbx
-	jg _putNbr
+	add rbx, 48
+	
 
-
+_condition:
+	jg _putNbrLoop
 
 _printRAXDigit:
 	add rax, 48
