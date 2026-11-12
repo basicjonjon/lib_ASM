@@ -1,14 +1,8 @@
 section .text
 	global _ft_strelen
 
-; section .data
-; 	text db "test",10
-
-
-
-; section .bss
-
 _ft_strelen:
+	push rcx
 	mov rax, rdi
 	mov rcx, 0
 _loop:
@@ -19,4 +13,5 @@ _loop:
 	jmp _loop
 _end:
 	mov rax, rcx
+	pop rcx
 	ret
