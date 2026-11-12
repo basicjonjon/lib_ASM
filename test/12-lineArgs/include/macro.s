@@ -39,3 +39,15 @@
 	pop rbp
 %endmacro
 
+%macro strlen 1
+	mov rax, %1
+	mov rcx, 0
+%%loops:
+	cmp [rax], 0
+	jz %%end
+	inc rcx
+	inc rax
+	jmp %%loops
+%%end:
+	mov rax, rcx
+%endmacro
