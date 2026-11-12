@@ -1,4 +1,4 @@
-NAME= macro
+NAME= putnbr
 TEST_ARGS=
 
 ASM_FILES= main 

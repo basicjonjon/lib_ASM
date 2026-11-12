@@ -2,36 +2,46 @@
 %include "const.s"
 
 section .data
-	digit db 0,10 ; reserve deux octet, le 0 vas contenir la valeur ascii du nombre et 10 est le \n pour l'affichage
-
-section .bss
+	digit db 0,10
 
 
 section .text
 	global _start
 
 _start:
-	
+	mov rdi, 5
+	call _putNbr
 	exit 0
 
+%macro divide 1
+	push rbx
+	mov rdx, 0
+	mov rbx, %1
+	div rbx
+	pop rbx
+%endmacro
 
 _putNbr:
-	mov rdx 0
+	mov rax, rdi
+	push rbp
+	mov rbp, rsp
 _putNbrLoop:
-	cmp rax, 10
-	div 10
-	add rbx, 48
-	
-
-_condition:
-	jg _putNbrLoop
-
-_printRAXDigit:
-	add rax, 48
-	mov [digit], al
+	divide 10
+	add rdx, 48
+	push rdx
+	cmp rax, 0
+	jz _print
+	jmp _putNbrLoop
+_print:
+	cmp rsp, rbp
+	je _end
 	mov rax, 1
 	mov rdi, STDOUT
-	mov rsi, digit
-	mov rdx, 2 
+	mov rsi, rsp
+	mov rdx, 1
 	syscall
+	pop rdx
+	jmp _print
+_end:
+	pop rbp
 	ret
