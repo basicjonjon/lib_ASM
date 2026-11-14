@@ -1,17 +1,17 @@
 section .text
-	global _ft_strelen
+	global ft_strlen
 
-_ft_strelen:
+ft_strlen:
 	push rcx
 	mov rax, rdi
 	mov rcx, 0
-_loop:
+.loop:
 	cmp [rax], 0
-	jz _end
+	jz .end
 	inc rcx
 	inc rax
-	jmp _loop
-_end:
+	jmp .loop
+.end:
 	mov rax, rcx
 	pop rcx
 	ret

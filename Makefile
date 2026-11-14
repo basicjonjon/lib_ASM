@@ -1,7 +1,18 @@
 NAME= libasm.a
+EXE= libasm
 TEST_ARGS=
 
-ASM_FILES= ft_strlen 
+
+MAIN= main.c
+FILES= ft_strlen \
+		ft_strcpy \
+		ft_strcmp \
+		ft_write \
+		ft_read \
+		ft_strdup
+
+COMP_C= cc
+COMP_C_FLAG= -Wall -Werror -Wextra
 
 COMP= nasm
 COMP_FLAG= -f elf64 -Iinclude
@@ -18,7 +29,7 @@ SRCS_FOLDER= src
 OBJ_EXT= .o
 SRC_EXT= .s
 
-OBJS_FILES= $(addprefix $(OBJS_FOLDER)/, $(addsuffix $(OBJ_EXT),$(ASM_FILES)))
+OBJS_FILES= $(addprefix $(OBJS_FOLDER)/, $(addsuffix $(OBJ_EXT),$(FILES)))
 
 $(OBJS_FOLDER)/%$(OBJ_EXT): $(SRCS_FOLDER)/%$(SRC_EXT)
 	@clear
@@ -28,7 +39,7 @@ $(OBJS_FOLDER)/%$(OBJ_EXT): $(SRCS_FOLDER)/%$(SRC_EXT)
 
 #for lib
 $(NAME): $(OBJS_FILES)
-	@$(AR) $(AR_FLAG) $@ $<
+	@$(AR) $(AR_FLAG) $@ $^
 	@echo "$@ : [READY]"
 
 #for link
@@ -49,12 +60,15 @@ fclean: clean
 
 re: fclean all
 
-test: re
+test: re main
 	@clear
 	@echo "[START] $(NAME)"
 	@echo "---------------"
 	@echo " "
-	@./$(NAME) $(TEST_ARGS)
+	@./$(EXE) $(TEST_ARGS)
 	@echo " "
 	@echo "---------------"
 
+
+main:
+	@$(COMP_C) $(COMP_C_FLAG) $(MAIN) ./$(NAME) -o $(EXE)
