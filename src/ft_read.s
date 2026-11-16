@@ -6,10 +6,14 @@ ft_read:
 	mov rax, 0
 	syscall
 	cmp rax, 0
-	jne .error
+	jl .error
 	jmp .end
 .error:
+	neg rax
+	push rax
 	call __errno_location
-	mov [rax], -1
+	pop rdx
+	mov [rax], edx
+	mov rax, -1
 .end:
 	ret

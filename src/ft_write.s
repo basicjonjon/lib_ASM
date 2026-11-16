@@ -5,12 +5,16 @@ section .text
 ft_write:
 	mov rax, 1
 	syscall
-	cmp rax, -1
-	je .error
+	cmp rax, 0
+	jl .error
 	jmp .end
 .error:
+	neg rax
+	push rax
 	call __errno_location
-	mov [rax], -1
+	pop rdx
+	mov [rax], edx
+	mov rax, -1
 .end:
 	ret
 

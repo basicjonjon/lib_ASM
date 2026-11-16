@@ -2,7 +2,7 @@ section .text
 	global ft_strcpy
 
 ft_strcpy:
-	mov rax, rsi
+	mov rax, rdi
 .loop:
 	mov dl, [rsi]
 	mov [rdi], dl
@@ -10,6 +10,6 @@ ft_strcpy:
 	jz .end
 	inc rsi
 	inc rdi
-	jnz ft_strcpy
+	jnz .loop
 .end:
 	ret
