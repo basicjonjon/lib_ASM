@@ -2,6 +2,7 @@ section .text
 	global ft_strlen
 
 ft_strlen:
+	push rdx
 	mov rax, rdi
 	mov rdx, 0
 .loop:
@@ -12,4 +13,5 @@ ft_strlen:
 	jmp .loop
 .end:
 	mov rax, rdx
+	pop rdx
 	ret

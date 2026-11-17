@@ -9,7 +9,8 @@ FILES= ft_strlen \
 		ft_strcmp \
 		ft_write \
 		ft_read \
-		ft_strdup
+		ft_strdup \
+		ft_atoi_base_bonus
 
 COMP_C= cc
 COMP_C_FLAG= -Wall -Werror -Wextra -Iinclude -Lsrc
@@ -68,6 +69,5 @@ fclean: clean
 	@rm -rf src/$(NAME)
 	@rm -rf $(EXE)
 	@echo "[EXE DELETED]"
-
 
 .PHONY: all re main test clean fclean
