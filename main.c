@@ -10,16 +10,19 @@
 
 int main(void)
 {
-    // ft_atoi_base("12", "321");
-   printf("valid base %d\n",_check_base("0123456789"));
-   printf("empty base %d\n",_check_base(""));
-   printf("repeat base%d\n",_check_base("12234567890"));
-   
+    printf("atoibase %d\n",ft_atoi_base("0A", "0123456789ABCDEF"));
+    printf("atoibase %d\n",ft_atoi_base("1010", "01"));
+    printf("atoibase %d\n",ft_atoi_base("10", "0123456789"));
 
-   printf("get value %d\n",_get_value('2', "0123456789"));
-   printf("atoibase %d\n",ft_atoi_base("FF", "0123456789ABCDEF"));
+    // printf("checkchar %d\n", _check_char('\t'));
+    printf("atoibase %d\n",ft_atoi_base("0A", "0123456+789ABCDEF"));
+    printf("atoibase %d\n",ft_atoi_base("1010", "011"));
+    printf("atoibase %d\n",ft_atoi_base("1", "\t1"));
+    printf("atoibase %d\n",ft_atoi_base("10", "1"));
 
-   
+
+
+
 
 }
 

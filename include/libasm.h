@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 18:10:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2026/11/17 21:19:50 by jle-doua         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:03:32 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,8 @@ int ft_atoi_base(char *str, char *base);
 
 int _check_base(char *base);
 int _get_value(char num, char *base);
+int _is_whitespace(char c);
+int _is_invalide_char(char c);
+int _check_char(char c);
+
+
